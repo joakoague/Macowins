@@ -1,22 +1,34 @@
 package paquete;
 
-import java.util.ArrayList;
+
 
 public class Ventas {
 
-	private ArrayList ventas;
+	private int cantidad, fecha;
+	private Object Prenda;
 	
-	public Ventas(){
-		ventas = new ArrayList();
+	public Ventas(Object Prenda, int cantidad, int fecha){
+		this.Prenda = Prenda;
+		this.cantidad = cantidad;
+		this.fecha = fecha;
 	}
 	
 	
-	public void Vender(Object prenda, int cantidad, int fecha){
-		
-	}
+	//public void Vender(Object prenda, int cantidad, int fecha){}
 	
-	public void ListaVentas(){
-		
-		
+	public int getCantidad() {
+		return cantidad;
+	}
+	public int getFecha() {
+		return fecha;
+	}
+	public Object getPrenda() {
+		return Prenda;
+	}
+
+
+	public void MostrarVenta(Ventas Venta){
+		System.out.println("Prenda: "+((Saco) Venta.getPrenda()).getNombre()+"  -  Cantidad: "+Venta.getCantidad()+"  -  Fecha: "+Venta.getFecha());
+		//Aca tambies estoy casteando Saco, porque sino no sabe si tiene el metodo getNombre
 	}
 }

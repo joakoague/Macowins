@@ -2,21 +2,21 @@ package paquete;
 
 public class Prenda {
 	
-	private boolean lugar;
+	private boolean importada;
 	private Object Tipo;
 	
 	public Prenda(Object Tipo, boolean lugar){
 		this.Tipo = Tipo;		
-		this.lugar = lugar;		
+		this.importada = lugar;		
 	}
 
 	
 	
 	public boolean getLugar() {
-		return lugar;
+		return importada;
 	}
 	public void setLugar(boolean lugar) {
-		this.lugar = lugar;
+		this.importada = lugar;
 	}
 	public Object getTipo() {
 		return Tipo;
