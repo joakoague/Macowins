@@ -13,22 +13,27 @@ public class Ventas {
 	}
 	private String prendaVendida;
 	private double precioBaseVenta, valorFijoVenta;	//El valor fijo que tenian cuando se registro la venta
+	private double precioFinal;
 	
-	public Ventas(Prenda prenda, int cantidad, double vf){
+	public Ventas(Prenda prenda, int cantidad, double valorfijo, double precioFinal){
 		this.prendaVendida=prenda.getNombrePrenda() ;
 		this.cantidad = cantidad;
 		DateFormat formato = new SimpleDateFormat("dd/MM/yyyy --- HH:mm:ss");
 		Date fecha=new Date();
 		this.fecha=formato.format(fecha);
-		this.valorFijoVenta=vf;
+		this.valorFijoVenta=valorfijo;
 		this.precioBaseVenta=prenda.getPrecioBase();
+		this.precioFinal = precioFinal;
 	}
 
 	public void mostrarVenta(Ventas Venta){
-		Prenda prenda=new Prenda(Venta.precioBaseVenta,Venta.isImportada());
-		System.out.println("Prenda: "+Venta.getPrendaVendida()+"  -  Cantidad: "+Venta.getCantidad()+"  -  Precio :$"+prenda.precioFinal(Venta.getValorFijoVenta(), prenda)*Venta.getCantidad()+"\nFecha: "+Venta.getFecha());
+		//Prenda prenda=new Prenda(Venta.precioBaseVenta,Venta.isImportada());
+		System.out.println("\nPrenda: "+Venta.getPrendaVendida()+"  -  Cantidad: "+Venta.getCantidad()+"  -  Precio :$"+Venta.getPrecioFinal()+"\nFecha: "+Venta.getFecha());
 	}
 
+	public double getPrecioFinal(){
+		return precioFinal;
+	}
 	public int getCantidad() {
 		return cantidad;
 	}
