@@ -1,15 +1,8 @@
 package paquete;
 
-public class Camisa{
+public class Camisa extends Prenda {
 
-	private int precioBase;
-	
-	public Camisa(){
-		
-		this.precioBase = 200;
-	}
-
-	public int getPrecioBase() {
-		return precioBase;
+	public Camisa(boolean importada) {
+		super(200, importada);
 	}
 }

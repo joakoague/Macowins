@@ -1,19 +1,8 @@
 package paquete;
 
-public class Saco{
-	
-	private int precioBase;
-	private String nombre;
-	
-	public Saco(){
-		precioBase = 300;
-		nombre = "Camisa";
-	}
+public class Saco extends Prenda {
 
-	public int getPrecioBase() {
-		return precioBase;
-	}
-	public String getNombre() {
-		return nombre;
+	public Saco(boolean importada) {
+		super(300, importada);
 	}
 }

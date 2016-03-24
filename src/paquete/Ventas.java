@@ -1,34 +1,47 @@
 package paquete;
 
-
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 public class Ventas {
 
-	private int cantidad, fecha;
-	private Object Prenda;
-	
-	public Ventas(Object Prenda, int cantidad, int fecha){
-		this.Prenda = Prenda;
-		this.cantidad = cantidad;
-		this.fecha = fecha;
+	private int cantidad;
+	String fecha;
+	private boolean importada;
+	public boolean isImportada() {
+		return importada;
 	}
+	private String prendaVendida;
+	private double precioBaseVenta, valorFijoVenta;	//El valor fijo que tenian cuando se registro la venta
 	
-	
-	//public void Vender(Object prenda, int cantidad, int fecha){}
-	
+	public Ventas(Prenda prenda, int cantidad, double vf){
+		this.prendaVendida=prenda.getNombrePrenda() ;
+		this.cantidad = cantidad;
+		DateFormat formato = new SimpleDateFormat("dd/MM/yyyy --- HH:mm:ss");
+		Date fecha=new Date();
+		this.fecha=formato.format(fecha);
+		this.valorFijoVenta=vf;
+		this.precioBaseVenta=prenda.getPrecioBase();
+	}
+
+	public void mostrarVenta(Ventas Venta){
+		Prenda prenda=new Prenda(Venta.precioBaseVenta,Venta.isImportada());
+		System.out.println("Prenda: "+Venta.getPrendaVendida()+"  -  Cantidad: "+Venta.getCantidad()+"  -  Precio :$"+prenda.precioFinal(Venta.getValorFijoVenta(), prenda)*Venta.getCantidad()+"\nFecha: "+Venta.getFecha());
+	}
+
 	public int getCantidad() {
 		return cantidad;
 	}
-	public int getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
-	public Object getPrenda() {
-		return Prenda;
+	public String getPrendaVendida() {
+		return prendaVendida;
 	}
-
-
-	public void MostrarVenta(Ventas Venta){
-		System.out.println("Prenda: "+((Saco) Venta.getPrenda()).getNombre()+"  -  Cantidad: "+Venta.getCantidad()+"  -  Fecha: "+Venta.getFecha());
-		//Aca tambies estoy casteando Saco, porque sino no sabe si tiene el metodo getNombre
+	public double getPrecioBaseVenta() {
+		return precioBaseVenta;
+	}
+	public double getValorFijoVenta() {
+		return valorFijoVenta;
 	}
 }

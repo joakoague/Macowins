@@ -1,41 +1,29 @@
 package paquete;
 
 public class Prenda {
-	
-	private boolean importada;
-	private Object Tipo;
-	
-	public Prenda(Object Tipo, boolean lugar){
-		this.Tipo = Tipo;		
-		this.importada = lugar;		
-	}
 
-	
-	
-	public boolean getLugar() {
+	private boolean importada;
+	private double precioBase;
+
+	public Prenda(double precioBase, boolean importada) {
+		this.importada = importada;
+		this.precioBase = precioBase;
+	}
+	public boolean isImportada() {
 		return importada;
 	}
-	public void setLugar(boolean lugar) {
-		this.importada = lugar;
+	public double getPrecioBase() {
+		return precioBase;
 	}
-	public Object getTipo() {
-		return Tipo;
-	}
-	public void setTipo(Object Tipo) {
-		this.Tipo = Tipo;
+	public String getNombrePrenda() {
+		return this.getClass().getSimpleName();		//Nombre de la clase
 	}
 	
-	public double precioFinal(int precioB, int valorF, boolean importacion){
-		double impo;
-		
-		if (importacion)
-			impo = 1.3;
-		else
-			impo = 1;
-			
-		double pf = (valorF + precioB)*impo;
+	public double precioFinal(double valorFijo, Prenda prenda) {
+		double porcentajeImportacion;
+		porcentajeImportacion= (prenda.importada)?1.3:1;
+		double pf = (prenda.precioBase + valorFijo) * porcentajeImportacion;
 		return pf;
 	}
 
-	
 }

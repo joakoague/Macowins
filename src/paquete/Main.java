@@ -2,82 +2,32 @@ package paquete;
 import java.util.*;
 import java.util.ArrayList;
 public class Main {
-	
-	
+public static double valorFijo=100;
+public static String input;
+public static Scanner s = new Scanner(System.in);
+public static ArrayList<Ventas> Arrayventas = new ArrayList<Ventas>();
 
 	public static void main(String[] args) {
-		Scanner s = new Scanner(System.in);
-		ArrayList<Ventas> Arrayventas = new ArrayList<Ventas>();
-		boolean flag1=true,flag2=true;
-		int n1,n2;
 		
-		System.out.println("Ingrese el valor fijo determinado para las prendas: ");
+		
+		boolean flag1=true;
+		int n1;
+		/*System.out.println("Ingrese el valor fijo determinado para las prendas: ");
 		String input = s.nextLine();
 		int valorFijo = Integer.parseInt(input);
-		
+		*/
 		
 		while(flag1){
 			
-			System.out.println("\nIngrese que operacion desea realizar: ");
-			System.out.println("calcular precio: 1");
-			System.out.println("lista de ventas: 2");
-			System.out.println("terminar: 3");
+			System.out.println("Ingrese que operacion desea realizar: ");
+			System.out.println("1: calcular precio");
+			System.out.println("2: lista de ventas");
+			System.out.println("3: terminar");
 			input = s.nextLine();
 			n1 = Integer.parseInt(input);
 	
 			switch(n1){
-				case 1:
-					Object tipo = null;
-					flag2 = true;
-					loop2: while (flag2){
-						System.out.println("\nIngrese el tipo de prenda");
-						System.out.println("salir: 0");
-						System.out.println("saco: 1");
-						System.out.println("pantalon: 2");
-						System.out.println("camisa: 3");
-						input = s.nextLine();
-						n2 = Integer.parseInt(input);
-						
-						
-						
-						switch(n2){		
-						case 0:
-							flag2 = false;
-							break loop2;
-						case 1:
-							Saco saco = new Saco();
-							tipo = saco;
-							break;
-						case 2:
-							Pantalon p = new Pantalon();
-							tipo = p;
-							break;
-						case 3:
-							Camisa c = new Camisa();
-							tipo = c;
-							break;			
-						default:
-							System.out.println("ERROR: Prenda inexistente.");
-							break loop2;
-						}
-						System.out.println("\nEs importada? 1/0");
-						input = s.nextLine();
-						boolean imp = (Integer.parseInt(input) == 1);
-						Prenda prenda = new Prenda (tipo,imp);
-						double pf = prenda.precioFinal( ((Saco) prenda.getTipo()).getPrecioBase(), valorFijo, imp);		//esta casteando saco para saber el objeto, tiene que ser general
-						//double pf2 = prenda.precioFinal( tipo.getPrecioBase(), valorFijo, imp);
-						System.out.println("\nEl precio final de la prenda es de: $"+pf);
-						
-						System.out.println("\ndesea venderla? Y/N");
-						input = s.nextLine();
-						if(input.contentEquals("y")){
-							System.out.println("\nCuantas?");
-							input = s.nextLine();
-							Arrayventas.add(new Ventas(tipo, Integer.parseInt(input), 23032016));
-							}
-						
-						}
-						break;
+				case 1: calcularPrecio();/*
 				case 2:
 						System.out.println("");	
 						Iterator it = Arrayventas.iterator(); 
@@ -91,9 +41,59 @@ public class Main {
 					flag1 = false;
 						break;
 		
-				}
+				}*/
+			
+		}
 			
 		}
 	}
-	
-}
+	private static void calcularPrecio(){
+		boolean flag2 = true;
+		int n2;
+		loop2: while (flag2){
+			System.out.println("\nIngrese el tipo de prenda");
+			System.out.println("0: salir");
+			System.out.println("1: saco");
+			System.out.println("2: pantalon");
+			System.out.println("3: camisa");
+			input = s.nextLine();
+			n2 = Integer.parseInt(input);
+			System.out.print("\nEs importada? S/N: ");
+			input = s.nextLine().toUpperCase();
+			boolean importada = (input.contentEquals("S"));
+			Prenda prenda;
+			switch(n2){		
+			case 0:
+				flag2 = false;
+				break loop2;
+			case 1:
+				prenda = new Saco(importada);
+				break;
+			case 2:
+				prenda = new Pantalon(importada);
+				break;
+			case 3:
+				prenda = new Camisa(importada);
+				break;			
+			default:
+				System.out.println("ERROR: Prenda inexistente.");
+				break loop2;
+			}
+			/*SACADO POR JULIAN ------ Prenda prenda = new Prenda (tipo,imp);
+			double pf = prenda.precioFinal( ((Saco) prenda.getTipo()).getPrecioBase(), valorFijo, imp);		//esta casteando saco para saber el objeto, tiene que ser general
+			*/
+			//double pf2 = prenda.precioFinal( tipo.getPrecioBase(), valorFijo, imp);
+			System.out.println("Precio final: $"+prenda.precioFinal(valorFijo,prenda));
+			System.out.print("Desea registrar venta? S/N: ");
+			input = s.nextLine();
+			if(input.contentEquals("s")){
+				System.out.print("\nCantidad?: ");
+				input = s.nextLine();
+				Ventas venta=new Ventas(prenda,Integer.parseInt(input),valorFijo);
+				venta.mostrarVenta(venta);
+				Arrayventas.add(venta);
+				
+			}
+			}
+	}
+		}
