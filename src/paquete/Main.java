@@ -43,6 +43,8 @@ public class Main {
 			case 3:
 				flag1 = false; 
 				break;	 
+			default:
+				System.out.println("XXX---OPCION INCORRECTA!!!!!!!");
 			}
 
 		}

@@ -4,7 +4,7 @@ public class Prenda {
 
 	private boolean importada;
 	protected double precioBase;
-	
+//--------------GETTERS/SETTERS------------------------	
 	public void setPrecioBase(double precio) {
 		this.precioBase = precio;
 	}
@@ -22,8 +22,8 @@ public class Prenda {
 	public double getPrecioBase() {
 		return precioBase;
 	}
-
-	public String getNombrePrenda() {
+//--------------------METODOS-------------------------------
+	public String getNombrePrenda() {				//DEVUELVE EL NOMBRE DE LA PRENDA
 		return this.getClass().getSimpleName(); // Nombre de la clase
 	}
 
