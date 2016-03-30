@@ -98,8 +98,14 @@ public class Main {
 	public static double calcularVentas(ArrayList<Ventas> Arrayventas){	// DEVUELVE EL TOTAL DE VENTAS DEL DIA
 	//System.out.println("Entro: "+Arrayventas.size());      tamaño del array
 	Arrayventas.forEach(venta->venta.mostrarVenta(venta));		//muestra cada venta realizada
-	double sumDia = Arrayventas.stream().mapToDouble(ventas->ventas.calcularPrecio()).sum(); //mapea y obtengo un Stream con todos los precios y el sum calcula el total
+	double sumDia = calcularSuma(Arrayventas) ; //mapea y obtengo un Stream con todos los precios y el sum calcula el total
 	System.out.println("Ganancia del dia: $"+sumDia+"\n");
 	return sumDia;
 	}	
+	
+	private static double calcularSuma(ArrayList<Ventas> array){
+		return array.stream()
+				.mapToDouble(ventas->ventas.calcularPrecio())
+				.sum();
+	}
 }
