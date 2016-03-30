@@ -27,10 +27,10 @@ public class Prenda {
 		return this.getClass().getSimpleName(); // Nombre de la clase
 	}
 
-	public double precioFinal(double valorFijo, Prenda prenda) {
+	public double precioFinal(double valorFijo) {
 		double porcentajeImportacion;
-		porcentajeImportacion = (prenda.importada) ? 1.3 : 1;
-		double precioFinal = (prenda.precioBase + valorFijo) * porcentajeImportacion;
+		porcentajeImportacion = (importada) ? 1.3 : 1;
+		double precioFinal = (precioBase + valorFijo) * porcentajeImportacion;
 		return precioFinal;
 	}
 

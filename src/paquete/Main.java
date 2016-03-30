@@ -8,10 +8,13 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Main {
+	// ------------ATRIBUTOS------------------------
 	public static double valorFijo = 100;
 	private static String input;
 	private static Scanner s = new Scanner(System.in);
-	private static ArrayList<Ventas> Arrayventas = new ArrayList<Ventas>();
+	private static ArrayList<Ventas> Arrayventas = new ArrayList<Ventas>(); // Coleccion de Ventas
+	// -------------METODOS---------------------------------
+
 	public static void main(String[] args) {
 		boolean flag1 = true;
 		int n1;
@@ -20,9 +23,7 @@ public class Main {
 		 * "Ingrese el valor fijo determinado para las prendas: "); String input
 		 * = s.nextLine(); int valorFijo = Integer.parseInt(input);
 		 */
-
 		while (flag1) {
-
 			System.out.println("Ingrese que operacion desea realizar: ");
 			System.out.println("1 = calcular precio");
 			System.out.println("2 = lista de ventas");
@@ -36,13 +37,14 @@ public class Main {
 			case 2:
 				calcularVentas(Arrayventas);
 				break;
-				/*
-				 * System.out.println(""); Iterator it = Arrayventas.iterator();
-				 * while ( it.hasNext() ) { Object objeto = it.next(); Ventas
-				 * producto = (Ventas)objeto; producto.MostrarVenta(producto); */
+			/*
+			 * System.out.println(""); Iterator it = Arrayventas.iterator();
+			 * while ( it.hasNext() ) { Object objeto = it.next(); Ventas
+			 * producto = (Ventas)objeto; producto.MostrarVenta(producto);
+			 */
 			case 3:
-				flag1 = false; 
-				break;	 
+				flag1 = false;
+				break;
 			default:
 				System.out.println("XXX---OPCION INCORRECTA!!!!!!!");
 			}
@@ -79,35 +81,50 @@ public class Main {
 				System.out.println("ERROR: Prenda inexistente.");
 				break loop2;
 			}
-			System.out.print("\nEs importada? S/N: ");
-			input = s.nextLine().toUpperCase();
-			boolean importada = (input.contentEquals("S"));
+			boolean flagImportada = true;
+			while (flagImportada) {
+				System.out.print("\nEs importada? S/N: ");
+				input = s.nextLine().toUpperCase();
+				if ((input.contentEquals("S")) || (input.contentEquals("N"))) {
+					flagImportada=false;		//sale del ciclo
+				}
+				else {System.out.println("XXX--- OPCION INCORRECTA");}
+			}
+			boolean importada = input.contentEquals("S");
 			prenda.setImportada(importada);
-				// double pf2 = prenda.precioFinal( tipo.getPrecioBase(), valorFijo,
+			// double pf2 = prenda.precioFinal( tipo.getPrecioBase(), valorFijo,
 			// imp);
-			System.out.println("Precio final: $" + prenda.precioFinal(valorFijo, prenda));
+			System.out.println("Precio final: $" + prenda.precioFinal(valorFijo));
+			boolean flagRegistrar=true;
+			while(flagRegistrar){
 			System.out.print("Desea registrar venta? S/N: ");
-			input = s.nextLine();
-			if (input.contentEquals("s")) {
-				System.out.print("Cantidad: ");
-				input = s.nextLine();
-				Ventas venta = new Ventas(prenda, Integer.parseInt(input),valorFijo);
-				venta.mostrarVenta(venta);
-				Arrayventas.add(venta);
+			input = s.nextLine().toUpperCase();
+			if ((input.contentEquals("S"))||(input.contentEquals("N"))) {
+				flagRegistrar=false;
+				if (input.contentEquals("S")){		//Registra la Venta
+					System.out.print("Cantidad: ");
+					input = s.nextLine();
+					Ventas venta = new Ventas(prenda, Integer.parseInt(input), valorFijo);
+					venta.mostrarVenta();
+					Arrayventas.add(venta);
+				}
+			}
+			else {System.out.println("OPCION INCORRECTA!");}
+			}
 			}
 		}
+
+	public static double calcularVentas(ArrayList<Ventas> Arrayventas) { // DEVUELVE EL TOTAL DE VENTAS DEL DIA
+		// System.out.println("Entro: "+Arrayventas.size()); tamaño del array
+		Arrayventas.forEach(venta -> venta.mostrarVenta());		 // muestra cada venta realizada
+		double sumDia = calcularSuma(Arrayventas); 					// mapea y obtengo un Stream con todos los precios y el sum calcula el total
+		System.out.println("Ganancia del dia: $" + sumDia + "\n");
+		return sumDia;
 	}
-	public static double calcularVentas(ArrayList<Ventas> Arrayventas){	// DEVUELVE EL TOTAL DE VENTAS DEL DIA
-	//System.out.println("Entro: "+Arrayventas.size());      tamaño del array
-	Arrayventas.forEach(venta->venta.mostrarVenta(venta));		//muestra cada venta realizada
-	double sumDia = calcularSuma(Arrayventas) ; //mapea y obtengo un Stream con todos los precios y el sum calcula el total
-	System.out.println("Ganancia del dia: $"+sumDia+"\n");
-	return sumDia;
-	}	
-	
-	private static double calcularSuma(ArrayList<Ventas> array){
+
+	private static double calcularSuma(ArrayList<Ventas> array) {
 		return array.stream()
-				.mapToDouble(ventas->ventas.calcularPrecio())
+				.mapToDouble(ventas -> ventas.calcularPrecio())
 				.sum();
 	}
 }

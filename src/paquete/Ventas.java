@@ -22,12 +22,12 @@ public class Ventas {
 		fechaVenta=formato.format(fecha);
 	}
 
-	public void mostrarVenta(Ventas Venta){
+	public void mostrarVenta(){
 		double precio=calcularPrecio();
 		System.out.println("Prenda: "+this.nombrePrenda+"  -  Cantidad: "+this.cantidadVendida+"  -  Precio :$"+precio+"\nFecha: "+this.fechaVenta);
 	}
 	public double calcularPrecio(){
-		double precio=prendaVendida.precioFinal(valorFijoVenta, prendaVendida)*cantidadVendida;
+		double precio=prendaVendida.precioFinal(valorFijoVenta)*cantidadVendida;
 		return precio;
 	}
 //------------GETTERS, SETTERS-----------------------

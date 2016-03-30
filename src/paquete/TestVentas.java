@@ -16,11 +16,11 @@ public class TestVentas {
 	static double total=0;
 	@Test
 	public void testPrecioSacoNacional() {
-		Assert.assertEquals(400, sacoNacional.precioFinal(valorFijo, sacoNacional),0); //300 + el valorFijo(100)
+		Assert.assertEquals(400, sacoNacional.precioFinal(valorFijo),0); //300 + el valorFijo(100)
 	}
 	@Test
 	public void testPrecioCamisaImportada(){
-		Assert.assertEquals(390, camisaImportada.precioFinal(valorFijo, camisaImportada),0); //(200+100)*1,3
+		Assert.assertEquals(390, camisaImportada.precioFinal(valorFijo),0); //(200+100)*1,3
 	}
 	@Test
 	public void testVentas(){
