@@ -81,13 +81,7 @@ public class Main {
 			input = s.nextLine().toUpperCase();
 			boolean importada = (input.contentEquals("S"));
 			prenda.setImportada(importada);
-			/*
-			 * SACADO POR JULIAN ------ Prenda prenda = new Prenda (tipo,imp);
-			 * double pf = prenda.precioFinal( ((Saco)
-			 * prenda.getTipo()).getPrecioBase(), valorFijo, imp); //esta
-			 * casteando saco para saber el objeto, tiene que ser general
-			 */
-			// double pf2 = prenda.precioFinal( tipo.getPrecioBase(), valorFijo,
+				// double pf2 = prenda.precioFinal( tipo.getPrecioBase(), valorFijo,
 			// imp);
 			System.out.println("Precio final: $" + prenda.precioFinal(valorFijo, prenda));
 			System.out.print("Desea registrar venta? S/N: ");
@@ -95,7 +89,7 @@ public class Main {
 			if (input.contentEquals("s")) {
 				System.out.print("Cantidad: ");
 				input = s.nextLine();
-				Ventas venta = new Ventas(prenda, Integer.parseInt(input), valorFijo);
+				Ventas venta = new Ventas(prenda, Integer.parseInt(input),valorFijo);
 				venta.mostrarVenta(venta);
 				Arrayventas.add(venta);
 			}
@@ -103,7 +97,7 @@ public class Main {
 	}
 	public static double calcularVentas(ArrayList<Ventas> Arrayventas){	// DEVUELVE EL TOTAL DE VENTAS DEL DIA
 	//System.out.println("Entro: "+Arrayventas.size());      tamaño del array
-	Arrayventas.forEach(v->v.mostrarVenta(v));		//muestra cada venta realizada
+	Arrayventas.forEach(venta->venta.mostrarVenta(venta));		//muestra cada venta realizada
 	double sumDia = Arrayventas.stream().mapToDouble(ventas->ventas.calcularPrecio()).sum(); //mapea y obtengo un Stream con todos los precios y el sum calcula el total
 	System.out.println("Ganancia del dia: $"+sumDia+"\n");
 	return sumDia;

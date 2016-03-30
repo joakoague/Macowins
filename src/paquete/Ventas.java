@@ -12,13 +12,13 @@ public class Ventas {
 	private String prendaVendida;
 	private double precioBaseVenta, valorFijoVenta;	//El valor fijo que tenian cuando se registro la venta
 	//---------------------------METODOS----------------------------
-	public Ventas(Prenda prenda, int cantidad, double vf){
+	public Ventas(Prenda prenda, int cantidad,double valorFijo){
 		this.prendaVendida=prenda.getNombrePrenda() ;
 		this.cantidad = cantidad;
 		DateFormat formato = new SimpleDateFormat("dd/MM/yyyy --- HH:mm:ss");
 		Date fecha=new Date();
 		this.fecha=formato.format(fecha);
-		this.valorFijoVenta=vf;
+		this.valorFijoVenta=valorFijo;
 		this.precioBaseVenta=prenda.getPrecioBase();
 		this.importada=prenda.isImportada();
 	}
@@ -28,7 +28,8 @@ public class Ventas {
 		System.out.println("Prenda: "+Venta.getPrendaVendida()+"  -  Cantidad: "+Venta.getCantidad()+"  -  Precio :$"+precio+"\nFecha: "+Venta.getFecha());
 	}
 	public double calcularPrecio(){
-		Prenda prenda=new Prenda(this.precioBaseVenta,this.isImportada());
+		Prenda prenda=new Prenda(this.isImportada());			//Creo una prenda, para que ELLA calcule su precio
+		prenda.setPrecioBase(this.getPrecioBaseVenta());;
 		double precio=prenda.precioFinal(this.getValorFijoVenta(), prenda)*this.getCantidad();
 		return precio;
 	}

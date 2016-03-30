@@ -3,14 +3,16 @@ package paquete;
 public class Prenda {
 
 	private boolean importada;
-	private double precioBase;
+	protected double precioBase;
 	
+	public void setPrecioBase(double precio) {
+		this.precioBase = precio;
+	}
 	public void setImportada(boolean importada) {
 		this.importada = importada;
 	}
-	public Prenda(double precioBase, boolean importada) {
+	public Prenda(boolean importada) {
 		this.importada = importada;
-		this.precioBase = precioBase;
 	}
 
 	public boolean isImportada() {
@@ -28,8 +30,8 @@ public class Prenda {
 	public double precioFinal(double valorFijo, Prenda prenda) {
 		double porcentajeImportacion;
 		porcentajeImportacion = (prenda.importada) ? 1.3 : 1;
-		double pf = (prenda.precioBase + valorFijo) * porcentajeImportacion;
-		return pf;
+		double precioFinal = (prenda.precioBase + valorFijo) * porcentajeImportacion;
+		return precioFinal;
 	}
 
 }
