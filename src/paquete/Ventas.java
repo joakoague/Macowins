@@ -8,6 +8,9 @@ public class Ventas {
 	//---------------------------ATRIBUTOS----------------------------
 	private int cantidadVendida;
 	String fechaVenta;
+	public String getFechaVenta() {
+		return fechaVenta;
+	}
 	Prenda prendaVendida;
 	private String nombrePrenda;
 	private double valorFijoVenta;	//El valor fijo que tenian cuando se registro la venta
@@ -17,7 +20,7 @@ public class Ventas {
 		nombrePrenda=prenda.getNombrePrenda() ;
 		cantidadVendida = cantidad;
 		valorFijoVenta=valorFijo;
-		DateFormat formato = new SimpleDateFormat("dd/MM/yyyy --- HH:mm:ss");
+		DateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 		Date fecha=new Date();
 		fechaVenta=formato.format(fecha);
 	}
@@ -31,7 +34,10 @@ public class Ventas {
 		return precio;
 	}
 //------------GETTERS, SETTERS-----------------------
-	
+	public void setFecha(String fecha){
+		fechaVenta=fecha;
+	}
 //------------------------------------------------
+
 }
 

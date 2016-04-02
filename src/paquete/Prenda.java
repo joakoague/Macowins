@@ -4,6 +4,7 @@ public class Prenda {
 
 	private boolean importada;
 	protected double precioBase;
+	
 //--------------GETTERS/SETTERS------------------------	
 	public void setPrecioBase(double precio) {
 		this.precioBase = precio;
@@ -29,7 +30,9 @@ public class Prenda {
 
 	public double precioFinal(double valorFijo) {
 		double porcentajeImportacion;
-		porcentajeImportacion = (importada) ? 1.3 : 1;
+		double tasaImportacion = 1.3;
+		double tasaNacional=1;
+		porcentajeImportacion = (importada) ? tasaImportacion : tasaNacional;
 		double precioFinal = (precioBase + valorFijo) * porcentajeImportacion;
 		return precioFinal;
 	}
