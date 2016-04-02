@@ -1,7 +1,7 @@
 package paquete;
 
 public class Prenda {
-
+	public double precioFijo=100;
 	private boolean importada;
 	protected double precioBase;
 	
@@ -35,6 +35,9 @@ public class Prenda {
 		porcentajeImportacion = (importada) ? tasaImportacion : tasaNacional;
 		double precioFinal = (precioBase + valorFijo) * porcentajeImportacion;
 		return precioFinal;
+	}
+	public double precioFinal(){
+		return precioFinal(precioFijo);
 	}
 
 }

@@ -10,23 +10,22 @@ import org.junit.Test;
 
 public class TestVentas {
 	ArrayList<Ventas> arrayVentas = new ArrayList<Ventas>();
-	static int valorFijo = 100;
 	// ----------------PRENDAS--------------------------------
 	Prenda sacoNacional = new Saco(false); // $300
 	Prenda camisaImportada = new Camisa(true); // $200
 	Prenda pantalonNacional = new Pantalon(false); // $250
 	static double total = 0;
 	// ----------------VENTAS---------------------------------------
-	Ventas ventaSaco = new Ventas(sacoNacional, 3, valorFijo); // 3 sacos=$1200
-	Ventas ventaPantalon = new Ventas(pantalonNacional, 2, valorFijo); // 2
+	Ventas ventaSaco = new Ventas(sacoNacional, 3); // 3 sacos=$1200
+	Ventas ventaPantalon = new Ventas(pantalonNacional, 2); // 2
 																		// pantalones=$700
-	Ventas ventaCamisa = new Ventas(camisaImportada, 2, valorFijo); // 2
+	Ventas ventaCamisa = new Ventas(camisaImportada, 2); // 2
 																	// camisas=$780
 	// -----------------TESTS------------------------------------
 
 	@Test
 	public void testPrecioSacoNacional() {
-		Assert.assertEquals(400, sacoNacional.precioFinal(valorFijo), 0); // 300
+		Assert.assertEquals(400, sacoNacional.precioFinal(), 0); // 300
 																			// +
 																			// el
 																			// valorFijo(100)
@@ -34,7 +33,7 @@ public class TestVentas {
 
 	@Test
 	public void testPrecioCamisaImportada() {
-		Assert.assertEquals(390, camisaImportada.precioFinal(valorFijo), 0); // (200+100)*1,3
+		Assert.assertEquals(390, camisaImportada.precioFinal(), 0); // (200+100)*1,3
 	}
 
 	@Test

@@ -15,11 +15,11 @@ public class Ventas {
 	private String nombrePrenda;
 	private double valorFijoVenta;	//El valor fijo que tenian cuando se registro la venta
 	//---------------------------METODOS----------------------------
-	public Ventas(Prenda prenda, int cantidad,double valorFijo){
+	public Ventas(Prenda prenda, int cantidad){
 		prendaVendida=prenda;
 		nombrePrenda=prenda.getNombrePrenda() ;
 		cantidadVendida = cantidad;
-		valorFijoVenta=valorFijo;
+		valorFijoVenta=prenda.precioFijo;
 		DateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 		Date fecha=new Date();
 		fechaVenta=formato.format(fecha);

@@ -100,7 +100,7 @@ public class Main {
 				if (input.contentEquals("S")){		//Registra la Venta
 					System.out.print("Cantidad: ");
 					input = s.nextLine();
-					Ventas venta = new Ventas(prenda, Integer.parseInt(input), valorFijo);
+					Ventas venta = new Ventas(prenda, Integer.parseInt(input));
 					venta.mostrarVenta();
 					Arrayventas.add(venta);
 				}
