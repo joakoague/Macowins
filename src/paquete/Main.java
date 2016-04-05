@@ -3,9 +3,10 @@ package paquete;
 import java.util.*;
 import java.util.ArrayList;
 
+import ropa.Prenda;
+
 public class Main {
 	// ------------ATRIBUTOS------------------------
-	public static double valorFijo = 100;
 	private static String input;
 	private static Scanner s = new Scanner(System.in);
 	private static ArrayList<Ventas> Arrayventas = new ArrayList<Ventas>(); // Coleccion de Ventas
@@ -60,7 +61,7 @@ public class Main {
 			input = s.nextLine();
 			n2 = Integer.parseInt(input);
 			Prenda prenda;
-			switch (n2) {
+			/*switch (n2) {
 			case 1:
 				prenda = new Saco(false);
 				break;
@@ -76,7 +77,7 @@ public class Main {
 			default:
 				System.out.println("ERROR: Prenda inexistente.");
 				break loop2;
-			}
+			}*/
 			boolean flagImportada = true;
 			while (flagImportada) {
 				System.out.print("\nEs importada? S/N: ");
@@ -90,7 +91,7 @@ public class Main {
 			prenda.setImportada(importada);
 			// double pf2 = prenda.precioFinal( tipo.getPrecioBase(), valorFijo,
 			// imp);
-			System.out.println("Precio final: $" + prenda.precioFinal(valorFijo));
+			System.out.println("Precio final: $" + prenda.calcularPrecio());
 			boolean flagRegistrar=true;
 			while(flagRegistrar){
 			System.out.print("Desea registrar venta? S/N: ");

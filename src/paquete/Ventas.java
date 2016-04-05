@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import ropa.Prenda;
+
 public class Ventas {
 	//---------------------------ATRIBUTOS----------------------------
 	private int cantidadVendida;
@@ -30,8 +32,8 @@ public class Ventas {
 		System.out.println("Prenda: "+this.nombrePrenda+"  -  Cantidad: "+this.cantidadVendida+"  -  Precio :$"+precio+"\nFecha: "+this.fechaVenta);
 	}
 	public double calcularPrecio(){
-		double precio=prendaVendida.precioFinal(valorFijoVenta)*cantidadVendida;
-		return precio;
+		double precio=prendaVendida.precioFinal();
+		return precio*cantidadVendida;
 	}
 //------------GETTERS, SETTERS-----------------------
 	public void setFecha(String fecha){
