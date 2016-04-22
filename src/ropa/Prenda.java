@@ -3,7 +3,7 @@ package ropa;
 import marcas.Marca;
 
 public class Prenda {
-	public double precioFijo=100;
+	public double PRECIOFIJO=100;
 	private boolean importada;
 	protected double precioBase;
 	private Marca marca;
@@ -44,12 +44,12 @@ public class Prenda {
 	public double calcularPrecio(double valorFijo) {
 		double porcentajeImportacion;
 		porcentajeImportacion = (importada) ? tasaImportacion : tasaNacional;
-		double precioFinal = (precioBase + valorFijo) * porcentajeImportacion;
+		double precioFinal = (getPrecioBase() + valorFijo) * porcentajeImportacion;
 		return precioFinal;
 	}
 	
 	public double calcularPrecio(){
-		return calcularPrecio(precioFijo);
+		return calcularPrecio(PRECIOFIJO);
 	}
 
 	public double precioFinal(){

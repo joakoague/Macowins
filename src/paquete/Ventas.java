@@ -21,7 +21,7 @@ public class Ventas {
 		prendaVendida=prenda;
 		nombrePrenda=prenda.getNombrePrenda() ;
 		cantidadVendida = cantidad;
-		valorFijoVenta=prenda.precioFijo;
+		valorFijoVenta=prenda.PRECIOFIJO;
 		DateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 		Date fecha=new Date();
 		fechaVenta=formato.format(fecha);
