@@ -52,7 +52,7 @@ public class TestVentas {
 
 	@Test
 	public void testPrecioCamisaImportada() {
-		Assert.assertEquals(429, camisaImportada.precioFinal(), 0);
+		Assert.assertEquals(527, camisaImportada.precioFinal(), 0);
 	}
 
 	@Test
@@ -62,8 +62,8 @@ public class TestVentas {
 		arrayVentas.add(ventaPantalon);
 		arrayVentas.add(ventaCamisa);
 		double total = Macowins.calcularVentas(arrayVentas, "25/10/1994");
-		Assert.assertEquals(858, total, 0);
-	} // la unica prenda que coindice con la fecha es la VentaCamisa (858)
+		Assert.assertEquals(1054, total, 0);
+	} // la unica prenda que coindice con la fecha es la VentaCamisa 
 
 	@Test
 	public void testTotalVentas() {
@@ -74,7 +74,7 @@ public class TestVentas {
 		Date fecha=new Date();
 		String fechaHoy=formato.format(fecha);
 		double total = Macowins.calcularVentas(arrayVentas,fechaHoy);
-		Assert.assertEquals(4819, total,0); 	//1650+1816+1288
+		Assert.assertEquals(5015, total,0); 	//1650+1816+1288
 	}
 	@Test 
 	public void testSarkany(){
